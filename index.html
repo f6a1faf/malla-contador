@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva - Contador UNLu</title>
+  <style>
+    body { font-family: sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    tr.aprobada { background-color: #d4edda; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+
+<h1>Malla Interactiva - Contador Público (UNLu)</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>✔</th>
+      <th>Materia</th>
+      <th>Código</th>
+      <th>Correlativas</th>
+      <th>Habilitada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="row-24201">
+      <td><input type="checkbox" onchange="marcarAprobada('24201', ['24202'])"></td>
+      <td>Introducción a la Contabilidad</td>
+      <td>24201</td>
+      <td>-</td>
+      <td>✅</td>
+    </tr>
+    <tr id="row-24202">
+      <td><input type="checkbox" id="chk-24202" disabled></td>
+      <td>Contabilidad Básica</td>
+      <td>24202</td>
+      <td>24201</td>
+      <td id="estado-24202">❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+function marcarAprobada(codigo, desbloquea) {
+  document.getElementById('row-' + codigo).classList.add('aprobada');
+  desbloquea.forEach(id => {
+    document.getElementById('chk-' + id).disabled = false;
+    document.getElementById('estado-' + id).innerText = '✅';
+  });
+}
+</script>
+
+</body>
+</html>
